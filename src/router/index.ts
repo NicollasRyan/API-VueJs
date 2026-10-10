@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import FavoritesView from '../views/FavoritesView.vue'
 import FilmsView from '../views/FilmsView.vue'
+import WatchedView from '../views/WatchedView.vue'
+import MovieNotesView from '../views/MovieNotesView.vue'
 import MovieDetailsView from '../views/MovieDetailsView.vue'
 
 const router = createRouter({
@@ -12,9 +13,14 @@ const router = createRouter({
       component: FilmsView,
     },
     {
-      path: '/favorites',
-      name: 'favorites',
-      component: FavoritesView,
+      path: '/watched',
+      name: 'watched',
+      component: WatchedView,
+    },
+    {
+      path: '/movies/:id/notes',
+      name: 'movie-notes',
+      component: MovieNotesView,
     },
     {
       path: '/movies/:id',

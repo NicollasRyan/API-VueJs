@@ -11,7 +11,7 @@ interface MovieResponse {
   total_results: number;
 }
 
-console.log("Token:", TOKEN); // Adicione esta linha para verificar o valor do token
+console.log("Token:", TOKEN); 
 
 export async function getPopularMovies(): Promise<Movie[]> {
   const response = await fetch(
@@ -42,4 +42,28 @@ export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
   }
   const data: MovieDetails = await response.json();
   return data;
+}
+
+export async function searchMovies(
+  query: string,
+): Promise<Movie[]> {
+  const response = await fetch(
+    `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&language=pt-BR&page=1&include_adult=false`,
+    {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+        Accept: 'application/json',
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Erro ao pesquisar filmes: ${response.status}`,
+    );
+  }
+
+  const data: MovieResponse = await response.json();
+
+  return data.results;
 }

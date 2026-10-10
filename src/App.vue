@@ -20,10 +20,10 @@ import { RouterView } from 'vue-router';
           </RouterLink>
 
           <RouterLink
-            to="/favorites"
+            to="/watched"
             class="nav-link text-light"
           >
-            Favoritos
+            Assistidos
           </RouterLink>
         </nav>
       </div>
